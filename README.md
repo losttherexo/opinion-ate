@@ -1,6 +1,7 @@
 # opinion-ate
 
 An app for tracking reviews of dishes at different restaurants.
+Also an exercise in agile TDD.
 
 Production: <https://opinion-ate-xo.netlify.app>
 
