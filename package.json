@@ -22,18 +22,15 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "prettier"
+      "react-app/jest"
     ],
     "plugins": [
-      "prettier",
       "cypress"
     ],
     "env": {
       "cypress/globals": true
     },
     "rules": {
-      "prettier/prettier": "warn"
     }
   },
   "browserslist": {
@@ -52,14 +49,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "cypress": "^9.6.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.2"
-  },
-  "prettier": {
-    "arrowParens": "avoid",
-    "bracketSpacing": false,
-    "singleQuote": true,
-    "trailingComma": "all"
+    "eslint-plugin-cypress": "^2.12.1"
   }
 }
