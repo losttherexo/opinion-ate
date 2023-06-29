@@ -6,9 +6,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -22,19 +26,15 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "prettier"
+      "react-app/jest"
     ],
     "plugins": [
-      "prettier",
       "cypress"
     ],
     "env": {
       "cypress/globals": true
     },
-    "rules": {
-      "prettier/prettier": "warn"
-    }
+    "rules": {}
   },
   "browserslist": {
     "production": [
@@ -52,14 +52,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "cypress": "^9.6.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.6.2"
-  },
-  "prettier": {
-    "arrowParens": "avoid",
-    "bracketSpacing": false,
-    "singleQuote": true,
-    "trailingComma": "all"
+    "eslint-plugin-cypress": "^2.12.1"
   }
 }
