@@ -11,6 +11,7 @@ describe('RestaurantList', () => {
   function renderComponent(propOverrides = {}){
     const props = {
       loadRestaurants: jest.fn().mockName('loadRestaurants'),
+      loading: false,
       restaurants,
       ...propOverrides
     }
@@ -25,10 +26,21 @@ describe('RestaurantList', () => {
     expect(loadRestaurants).toHaveBeenCalled()
   })
 
-  it('displays the restaurants', () => {
-    renderComponent()
+  it('displays the loading indicator while loading', () => {
+    renderComponent({loading: true})
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+  describe('when loading succeeds', () => {
+    it('displays the restaurants', () => {
+      renderComponent()
+  
+      expect(screen.getByText('Sushi Place')).toBeInTheDocument()
+      expect(screen.getByText('Pizza Place')).toBeInTheDocument()
+    })
+    it('does not display the loading indicator while not loading', () => {
+      renderComponent()
 
-    expect(screen.getByText('Sushi Place')).toBeInTheDocument()
-    expect(screen.getByText('Pizza Place')).toBeInTheDocument()
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
+    })
   })
 })

@@ -1,23 +1,27 @@
 import {useEffect} from 'react'
 import {connect} from 'react-redux'
+import CircularProgress from '@mui/material/CircularProgress'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import {loadRestaurants} from '../Store/restaurants/actions'
 
-export function RestaurantList({loadRestaurants, restaurants}) {
+export function RestaurantList({loadRestaurants, restaurants, loading}) {
     useEffect(() => {
         loadRestaurants()
     }, [loadRestaurants])
-    
+
     return (
-        <List>
-            {restaurants.map(r => (
-                <ListItem key={r.id}>
-                    <ListItemText>{r.name}</ListItemText>
-                </ListItem>
-            ))}
-        </List>
+        <>
+            {loading && <CircularProgress />}
+            <List>
+                {restaurants.map(r => (
+                    <ListItem key={r.id}>
+                        <ListItemText>{r.name}</ListItemText>
+                    </ListItem>
+                ))}
+            </List>
+        </>
     )
 }
 
