@@ -1,12 +1,17 @@
-import RestaurantList from './RestaurantList';
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
+import RestaurantList from './RestaurantList'
 
 function RestaurantScreen() {
   return (
-    <div>
-      <h1>Restaurants</h1>
-      <RestaurantList />
-    </div>
-  );
+    <Card>
+      <CardContent>
+        <Typography variant='h5'>Restaurants</Typography>
+        <RestaurantList />
+      </CardContent>
+    </Card>
+  )
 }
 
-export default RestaurantScreen;
+export default RestaurantScreen
