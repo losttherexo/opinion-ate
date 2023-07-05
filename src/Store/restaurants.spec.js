@@ -44,8 +44,11 @@ describe('restaurants', () => {
     
                 store.dispatch(loadRestaurants())
             })
-            it('stores the restaurants', async () => {
+            it('stores the restaurants', () => {
                 expect(store.getState().records).toEqual(records)
+            })
+            it('clears the loading flag', () => {
+                expect(store.getState().loading).toEqual(false)
             })
         })
     })
