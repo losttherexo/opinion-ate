@@ -29,7 +29,7 @@ describe('restaurants', () => {
             ]
             let store
 
-            beforeEach(async () => {
+            beforeEach(() => {
                 const api = {
                     loadRestaurants: () => Promise.resolve(records)
                 }
@@ -42,7 +42,7 @@ describe('restaurants', () => {
                     applyMiddleware(thunk.withExtraArgument(api))
                 )
     
-                await store.dispatch(loadRestaurants())
+                store.dispatch(loadRestaurants())
             })
             it('stores the restaurants', async () => {
                 expect(store.getState().records).toEqual(records)
