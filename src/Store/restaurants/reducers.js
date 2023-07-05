@@ -10,6 +10,10 @@ function records(s = [], action) {
     }
 }
 
+function loading() {
+    return true
+}
+
 export default combineReducers({
-    records,
+    records, loading
 })
