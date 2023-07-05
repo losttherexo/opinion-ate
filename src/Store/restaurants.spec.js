@@ -12,7 +12,7 @@ describe('restaurants', () => {
                 }
                 const initialState = {}
 
-                const store = createStore(
+                const store = legacy_createStore(
                     restaurantsReducer,
                     initialState,
                     applyMiddleware(thunk.withExtraArgument(api))
@@ -23,25 +23,28 @@ describe('restaurants', () => {
             })
         })
         describe('when loading succeeds', () => {
-            it('stores the restaurants', async () => {
-                const records = [
-                    {id: 1, name: 'Sushi Place'},
-                    {id: 2, name: 'Pizza Place'}
-                ]
+            const records = [
+                {id: 1, name: 'Sushi Place'},
+                {id: 2, name: 'Pizza Place'}
+            ]
+            let store
+
+            beforeEach(async () => {
                 const api = {
                     loadRestaurants: () => Promise.resolve(records)
                 }
                 const initialState = {
                     records: []
                 }
-                const store = legacy_createStore(
+                store = legacy_createStore(
                     restaurantsReducer,
                     initialState,
                     applyMiddleware(thunk.withExtraArgument(api))
                 )
     
                 await store.dispatch(loadRestaurants())
-        
+            })
+            it('stores the restaurants', async () => {
                 expect(store.getState().records).toEqual(records)
             })
         })
