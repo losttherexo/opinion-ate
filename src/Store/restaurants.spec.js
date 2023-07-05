@@ -1,9 +1,22 @@
-import {legacy_createStore, applyMiddleware, createStore} from "redux"
+import {legacy_createStore, applyMiddleware} from "redux"
 import thunk from "redux-thunk"
 import restaurantsReducer from './restaurants/reducers'
 import {loadRestaurants} from "./restaurants/actions"
 
 describe('restaurants', () => {
+    describe('initially', () => {
+        it('does not have the loading flag set', () => {
+            const initialState = {}
+
+            const store = legacy_createStore(
+                restaurantsReducer,
+                initialState,
+                applyMiddleware(thunk)
+            )
+            
+            expect(store.getState().loading).toEqual(false)
+        })
+    })
     describe('loadRestaurants action', () => {
         describe('while loading', () => {
             it('sets a loading flag', () => {
