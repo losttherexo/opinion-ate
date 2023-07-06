@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { TextField } from "@mui/material/";
 import Button from "@mui/material/Button";
+import { act } from "react-dom/test-utils";
 import { createRestaurant } from "../Store/restaurants/actions";
 
 export function NewRestaurantForm({createRestaurant}) {
@@ -16,7 +17,11 @@ export function NewRestaurantForm({createRestaurant}) {
         <form onSubmit={handleSubmit}>
             <TextField 
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={e => {
+                    act(()=> {
+                        setName(e.target.value)
+                    })
+                }}
                 placeholder="Add Restaurant"
                 fullWidth
                 variant="filled"

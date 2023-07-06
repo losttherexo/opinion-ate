@@ -116,7 +116,7 @@ describe('restaurants', () => {
                 createRestaurant: jest.fn().mockName('createRestaurant'),
             }
 
-            const initialState = {records: {existingRestaurant}}
+            const initialState = {records: [existingRestaurant]}
 
             store = legacy_createStore(
                 restaurantsReducer,

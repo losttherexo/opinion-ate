@@ -1,12 +1,14 @@
 import {combineReducers} from "redux"
-import { STORE_RESTAURANTS, START_LOADING, RECORD_LOADING_ERROR } from "./actions"
+import { STORE_RESTAURANTS, START_LOADING, RECORD_LOADING_ERROR, ADD_RESTAURANT } from "./actions"
 
-function records(s = [], action) {
+function records(state = [], action) {
     switch (action.type) {
         case STORE_RESTAURANTS:
             return action.records
+        case ADD_RESTAURANT:
+            return [...state, action.record]
         default:
-            return s
+            return state
     }
 }
 
