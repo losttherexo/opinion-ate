@@ -10,7 +10,9 @@ export const loadRestaurants = () => async (dispatch, getState, api) => {
     } catch {
         dispatch(recordLoadingError())
     }
-} 
+}
+
+export const createRestaurant = () => () => {}
 
 const startLoading = () => ({type: START_LOADING})
 
