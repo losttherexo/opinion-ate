@@ -1,4 +1,5 @@
 import { TextField } from "@mui/material/";
+import Button from "@mui/material/Button";
 
 export function NewRestaurantForm() {
     return (
@@ -8,6 +9,9 @@ export function NewRestaurantForm() {
                 fullWidth
                 variant="filled"
             />
+            <Button variant="contained" color="primary">
+                Add
+            </Button>
         </form>
     )
 }
