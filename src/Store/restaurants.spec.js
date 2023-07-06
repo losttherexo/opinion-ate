@@ -1,7 +1,7 @@
 import {legacy_createStore, applyMiddleware} from "redux"
 import thunk from "redux-thunk"
 import restaurantsReducer from './restaurants/reducers'
-import {loadRestaurants} from "./restaurants/actions"
+import {createRestaurant, loadRestaurants} from "./restaurants/actions"
 
 describe('restaurants', () => {
     describe('initially', () => {
@@ -101,6 +101,31 @@ describe('restaurants', () => {
             it('clears the loading flag', () => {
                 expect(store.getState().loading).toEqual(false)
             })
+        })
+    })
+    describe('createRestaurant action', () => {
+        const newRestaurantName = 'Sushi Place'
+
+        let api
+        let store
+
+        beforeEach(() => {
+            api = {
+                createRestaurant: jest.fn().mockName('createRestaurant'),
+            }
+
+            const initialState = {}
+
+            store = legacy_createStore(
+                restaurantsReducer,
+                initialState,
+                applyMiddleware(thunk.withExtraArgument(api)),
+            )
+        })
+
+        it('saves the restuarant to the server', () => {
+            store.dispatch(createRestaurant(newRestaurantName))
+            expect(api.createRestaurant).toHaveBeenCalledWith(newRestaurantName)
         })
     })
 })
