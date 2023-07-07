@@ -15,7 +15,7 @@ describe('NewRestaurant', () => {
     }
 
     describe('initially', () => {
-        it('does not displaya validation error', () => {
+        it('does not display a validation error', () => {
             renderComponent()
             expect(screen.queryByText(requiredError)).not.toBeInTheDocument()
         })
@@ -40,6 +40,11 @@ describe('NewRestaurant', () => {
         it('clears the name', async () => {
             await fillInForm()
             expect(screen.getByPlaceholderText('Add Restaurant').value).toEqual('')
+        })
+        
+        it('does not display a validation error', async () => {
+            await fillInForm()
+            expect(screen.queryByText(requiredError)).not.toBeInTheDocument()
         })
     })
     describe('when empty', () => {
