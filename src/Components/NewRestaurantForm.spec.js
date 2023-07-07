@@ -20,6 +20,11 @@ describe('NewRestaurant', () => {
             renderComponent()
             expect(screen.queryByText(requiredError)).not.toBeInTheDocument()
         })
+
+        it('does not display a server error', () => {
+            renderComponent()
+            expect(screen.queryByText(serverError)).not.toBeInTheDocument()
+        })
     })
     describe('when filled in', () => {
         async function fillInForm() {
