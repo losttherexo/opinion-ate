@@ -2,6 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { TextField } from "@mui/material/";
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 import { act } from "react-dom/test-utils";
 import { createRestaurant } from "../Store/restaurants/actions";
 
@@ -16,6 +17,7 @@ export function NewRestaurantForm({createRestaurant}) {
 
     return (
         <form onSubmit={handleSubmit}>
+            <Alert severity='error'>Name is required</Alert>
             <TextField 
                 value={name}
                 onChange={e => {
