@@ -72,6 +72,7 @@ describe('NewRestaurant', () => {
                 screen.getByPlaceholderText('Add Restaurant'),
                 restaurantName,
             )
+            userEvent.click(screen.getByText('Add'))
 
             return act(flushPromises)
         }
