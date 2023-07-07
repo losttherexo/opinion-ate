@@ -12,7 +12,7 @@ const api = {
     async createRestaurant(name) {
         const r = await client.post('/restaurants', {name})
         return r.data
-    }
+    },
 }
 
 export default api

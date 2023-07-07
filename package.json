@@ -55,6 +55,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "cypress": "^9.6.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-cypress": "^2.12.1"
+    "eslint-plugin-cypress": "^2.12.1",
+    "flush-promises": "^1.0.2"
   }
 }
