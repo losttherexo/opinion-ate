@@ -26,5 +26,10 @@ describe('NewRestaurant', () => {
             await fillInForm()
             expect(createRestaurant).toHaveBeenCalledWith(restaurantName)
         })
+
+        it('clears the name', async () => {
+            await fillInForm()
+            expect(screen.getByPlaceholderText('Add Restaurant').value).toEqual('')
+        })
     })
 })
