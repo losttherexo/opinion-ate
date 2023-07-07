@@ -9,8 +9,8 @@ const api = {
         const r = await client.get('/restaurants')
         return r.data
     },
-    async createRestaurant() {
-        const r = await client.post('/restaurants', {})
+    async createRestaurant(name) {
+        const r = await client.post('/restaurants', {name})
         return r.data
     }
 }
