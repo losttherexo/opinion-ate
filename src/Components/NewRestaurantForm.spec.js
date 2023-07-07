@@ -116,6 +116,11 @@ describe('NewRestaurant', () => {
             await fillInForm()
             expect(screen.getByText(serverError)).toBeInTheDocument()
         })
+
+        it('does not clear the name', async () => {
+            await fillInForm()
+            expect(screen.getByPlaceholderText('Add Restaurant').value).toEqual(restaurantName,)
+        })
     })
     describe('when retrying after a server error', () => {
         async function retrySubmittingForm() {
@@ -127,12 +132,13 @@ describe('NewRestaurant', () => {
                 restaurantName
             )
             userEvent.click(screen.getByText('Add'))
-            userEvent.click(screen.getByText('Add'))
+            await act(flushPromises)
 
+            userEvent.click(screen.getByText('Add'))
             return act(flushPromises)
         }
 
-        it ('clears the server error', async () => {
+        it('clears the server error', async () => {
             await retrySubmittingForm()
             expect(screen.queryByText(serverError)).not.toBeInTheDocument()
         })
